@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "lib": ["ES6"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "target": "es6",
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true
+    },
+    "include": [
+        "app.ts"
+    ]
+}
