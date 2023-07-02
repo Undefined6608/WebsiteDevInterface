@@ -6,12 +6,6 @@ import {logoData} from "../model/DataBase";
 import {logger} from "../config/config.default";
 
 /***************定义控制器方法*******************/
-/**
- * 获取logo
- * @param req
- * @param res
- * @param next
- */
 export const getLogo = (req, res, next) => {
     try {
         // 直接抛出logo地址

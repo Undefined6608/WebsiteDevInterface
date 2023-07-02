@@ -8,6 +8,5 @@ import {getLogo} from "../controller/homeController";
 /***************定义路由*****************/
 //获取logo
 homeRouter.get('/logo', getLogo);
-
 /****************抛出路由***************/
 export default homeRouter;

@@ -34,7 +34,6 @@ app.use(cors({
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的请求方法
-    credentials: true // 允许携带凭证（如 Cookie）
 }));
 //挂载morgan进行监听请求并输出
 app.use(morgan('dev'));
