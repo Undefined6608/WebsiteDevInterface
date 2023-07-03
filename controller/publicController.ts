@@ -90,7 +90,7 @@ export const getTopImg = (req, res, next) => {
  */
 export const getBottomMsgList = (req, res, next) => {
     try {
-        res.send(resultType(FAIL, "查询成功！", bottomMsgList));
+        res.send(resultType(SUCCESS, "查询成功！", bottomMsgList));
     } catch (e) {
         next(e);
     }

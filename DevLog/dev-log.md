@@ -1,12 +1,14 @@
-# 23.7.1项目开发日志
+# 项目开发日志
 
-## 一、创建项目
+## 23.7.1
+
+### 一、创建项目
 
 在`github`上创建`WebsiteDevInterface`仓库，
 
 使用`git clone git@github.com:Undefined6608/WebsiteDevInterface.git`将其克隆到本地
 
-## 二、初始化项目
+### 二、初始化项目
 
 使用`WebStorm`打开`WebsiteDevInterface`文件夹：
 
@@ -20,7 +22,7 @@ npm init -y
 
 ![](http://39.101.72.168:81/image/examination/log/Snipaste_2023-07-01_10-44-13.png)
 
-## 三、导入/配置依赖
+### 三、导入/配置依赖
 
 > 使用的依赖/框架：
 >
@@ -160,7 +162,7 @@ module.exports = () => {
 }
 ```
 
-## 四、创建路由
+### 四、创建路由
 
 在`router`文件夹中创建`index.ts`：
 
@@ -183,7 +185,7 @@ export default router;
 app.use('/api', router);
 ```
 
-### 创建子路由
+#### 创建子路由
 
 在`router`文件夹中创建`publicRouter.ts`、`homeRouter.ts`、`aboutRouter.ts`、`productRouter.ts`、`informationRouter.ts`,`contactRouter.ts`
 
@@ -214,11 +216,11 @@ router.use('/contact', contactRouter);
 export default router;
 ```
 
-## 五、创建控制器
+### 五、创建控制器
 
 在`controller`文件夹中创建`publicController.ts`、`homeController.ts`、`aboutController.ts`、`productController.ts`、`informatonController.ts`、`contactController.ts`
 
-## 六、创建本地数据库、泛型类、工具类
+### 六、创建本地数据库、泛型类、工具类
 
 在`config`文件夹中创建`PublicInterface.ts`文件
 
@@ -226,7 +228,7 @@ export default router;
 
 在`utils`文件夹中创建`index.ts`文件
 
-## 七、开始编写后端项目
+### 七、开始编写后端项目
 
 > 因为使用的为ts，并且数据库为本地文件，那么：
 >
@@ -237,7 +239,7 @@ export default router;
 > 	- 定义域控制器方法，进行数据的增删改查，并返回响应数据
 > 	- 在路由中调取控制器方法，并规定网络接口地址
 
-### I、定义返回数据格式
+#### I、定义返回数据格式
 
 在`publicInterface.ts`中编写：
 
@@ -280,9 +282,9 @@ export const resultType = (code: SUCCESSType | FAILType, msg: string, data: any)
 }
 ```
 
-### II、编写公共组件数据
+#### II、编写公共组件数据
 
-#### 1、顶部logo
+##### 1、顶部logo
 
 在`publicInterface.ts`中：
 
@@ -326,7 +328,7 @@ export const getLogo = (req, res, next) => {
 publicRouter.get('/logo', getLogo);
 ```
 
-#### 2、顶部副标题
+##### 2、顶部副标题
 
 在`publicInterface.ts`中：
 
@@ -369,7 +371,7 @@ publicRouter.get('/subTitle',getSubTitle);
 
 
 
-#### 3、导航列表
+##### 3、导航列表
 
 在`publicInterface.ts`中：
 
@@ -449,7 +451,7 @@ publicRouter.get('/navList',getNavList);
 
 
 
-#### 4、页面头部图片
+##### 4、页面头部图片
 
 在`publicInterface.ts`中：
 
@@ -533,7 +535,7 @@ publicRouter.get('/topImg',getTopImg);
 
 
 
-#### 4、底部信息列表
+##### 5、底部信息列表
 
 在`publicInterface.ts`中：
 
@@ -614,9 +616,257 @@ export const getBottomMsgList = (req, res, next) => {
 publicRouter.get('/bottomMsgList', getBottomMsgList);
 ```
 
+## 23.7.3
 
+### 一、继续编写
 
-### III、编写首页组件数据
+#### I、编写首页数据接口
+
+##### 1、编写首页第一个模块数据
+
+在`publicInterface.ts`中：
+
+```ts
+// 主页第一个模块数据类型
+export type HomeOneType = {
+    title: string,
+    subTitle: string,
+    imgUrl: string,
+    context: string[],
+    btnMsg: string,
+    link: string
+};
+```
+
+在`DataBase.ts`中：
+
+```ts
+// 主页第一个模块数据
+const HomeOneData: HomeOneType = {
+    title: "喜敷-专业科学护肤品牌",
+    subTitle: "XIFU- professional scientific skin care brand",
+    imgUrl: "http://39.101.72.168:81/image/examination/project/homeOneImg.jpg",
+    context: [
+        "传统护肤品配方，更多的是迎合大众速效的心理或追求产品营销卖点为目的，过于追求产品的使用效果，而降低产品本身对安全性的要求。常见于过度添加功效性成分甚至违规添加激素辅助等，极大增加了护肤使用造成的不良反应风险系数。",
+        "护肤品领域，历经多个时代变迁，伴随着各种技术的更新和成熟的背后是吸取了无数的案例验证和教训！而今我们面对未来，护肤需要更加科学、更加安全与可靠的方式进行。",
+        "喜敷-专业科学护肤品牌   专注问题肌肤的护理探研-引领专业成就科技之美 -打造护肤新势力",
+        "XIFU喜敷® 源自于台湾，依托台湾皮肤科专家游历东南亚国家积累十余年皮肤外用药研发和生产的经验，结合亚洲人皮肤特点，对研发产品的功能定位、功效、核心成份、核心技术严格把关，不断对产品配方工艺进行优化和改进，开发出效果、安全、肤感多兼顾的产品。"
+    ],
+    btnMsg: "查看更多",
+    link: "/about"
+}
+```
+
+在`homeController.ts`中：
+
+```ts
+// 首页第一个模块数据控制器
+export const getHomeOne = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeOneData));
+    } catch (e) {
+        next(e);
+    }
+};
+```
+
+在`homeRouter.ts`中：
+
+```ts
+//首页第一个模块数据路由
+homeRouter.get('/homeOne', getHomeOne);
+```
+
+##### 2、编写首页图片列表数据
+
+在`publicInterface.ts`中：
+
+```ts
+// 主页图片列表类型
+export type HomeImgType = {
+    imgUrl: string[]
+};
+```
+
+在`DataBase.ts`中：
+
+```ts
+// 主页上的图片集合
+const HomeImgList: HomeImgType = {
+    imgUrl:[
+        "http://39.101.72.168:81/image/examination/project/HomeImg01.jpg",
+        "http://39.101.72.168:81/image/examination/project/homeImg02.jpg"
+    ]
+}
+```
+
+在`homeController.ts`中：
+
+```ts
+// 获取首页图片集合
+export const getHomeImgList = (req, res, next) => {
+    try {
+        // 直接抛出图片数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeImgList));
+    } catch (e) {
+        next(e);
+    }
+};
+```
+
+在`homeRouter.ts`中：
+
+```ts
+// 首页图片集合
+homeRouter.get('/getHomeImgList',getHomeImgList);
+```
+
+##### 3、编写首页第二个模块数据
+
+在`publicInterface.ts`中：
+
+```ts
+// 主页第二个模块数据类型
+export type HomeTwoType = {
+    title: string,
+    subTitle: string,
+    type:Array<{
+        id:string,
+        name:string
+    }>,
+    productList:Array<{
+        id:string,
+        typeId:string,
+        itemImg:string,
+        name:string
+    }>
+}
+```
+
+在`DataBase.ts`中：
+
+```ts
+// 主页第二个模块数据
+const HomeTwoData: HomeTwoType = {
+    title: "产品中心",
+    subTitle: "PRODUCT CENTER",
+    type: [
+        {
+            id:'p1',
+            name:"喜敷 | 成人护理系列"
+        }
+    ],
+    productList: [
+        {
+            id: crypto.randomUUID(),
+            typeId:'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product1.jpg",
+            name: "XIFU 红豚护理软膏"
+        }, {
+            id: crypto.randomUUID(),
+            typeId:'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product2.jpg",
+            name: "XIFU喜敷 水杨酸焕颜面膜 100g"
+        }, {
+            id: crypto.randomUUID(),
+            typeId:'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product3.jpg",
+            name: "XIFU喜敷 氨基酸洁面慕斯 100ml"
+        }, {
+            id: crypto.randomUUID(),
+            typeId:'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product4.jpg",
+            name: "XIFU医用冷敷贴膜5片/盒"
+        }, {
+            id: crypto.randomUUID(),
+            typeId:'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product5.jpg",
+            name: "XIFU 喜敷 医用多肽水凝胶 100ml"
+        }, {
+            id: crypto.randomUUID(),
+            typeId:'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product6.jpg",
+            name: "XIFU 喜敷 清痘冷敷凝胶  15g"
+        }
+    ]
+}
+```
+
+在`homeController.ts`中：
+
+```ts
+// 首页第二个模块数据控制器
+export const getHomeTwo = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeTwoData));
+    } catch (e) {
+        next(e);
+    }
+};
+```
+
+在`homeRouter.ts`中：
+
+```ts
+//首页第二个模块数据路由
+homeRouter.get('/homeOne', getHomeTwo);
+```
+
+##### 4、编写首页第一个模块数据
+
+在`publicInterface.ts`中：
+
+```ts
+
+```
+
+在`DataBase.ts`中：
+
+```ts
+
+```
+
+在`homeController.ts`中：
+
+```ts
+
+```
+
+在`homeRouter.ts`中：
+
+```ts
+
+```
+
+##### 5、编写首页第一个模块数据
+
+在`publicInterface.ts`中：
+
+```ts
+
+```
+
+在`DataBase.ts`中：
+
+```ts
+
+```
+
+在`homeController.ts`中：
+
+```ts
+
+```
+
+在`homeRouter.ts`中：
+
+```ts
+
+```
+
+##### 6、编写首页第一个模块数据
 
 在`publicInterface.ts`中：
 

@@ -10,7 +10,7 @@ export type ResultTypeType = {
     msg: string,
     // 响应数据
     data: any | null
-}
+};
 // logo的类型
 export type LogoDataType = string;
 // 副标题的类型
@@ -21,13 +21,13 @@ export type NavItemType = {
     name: string,
     subName: string,
     url: string
-}
+};
 // 页面图片类型
 export type PageTopImg = {
     id: string,
     imgUrl: string,
     alt: string
-}
+};
 // 底部信息列表类型
 export type BottomMsgListType = {
     topLeft: {
@@ -49,4 +49,50 @@ export type BottomMsgListType = {
         one: string,
         two: string
     }
-}
+};
+// 主页第一个模块数据类型
+export type HomeOneType = {
+    title: string,
+    subTitle: string,
+    imgUrl: string,
+    context: string[],
+    btnMsg: string,
+    link: string
+};
+// 主页图片列表类型
+export type HomeImgType = {
+    imgUrl: string[]
+};
+// 主页第二个模块数据类型
+export type HomeTwoType = {
+    title: string,
+    subTitle: string,
+    type: Array<{
+        id: string,
+        name: string
+    }>,
+    productList: Array<{
+        id: string,
+        typeId: string,
+        itemImg: string,
+        name: string
+    }>
+};
+// 主页第三个模块数据类型
+export type HomeThreeType = {
+    oneTitle: string,
+    oneSubTitle: string,
+    twoTitle: string,
+    twoSubTitle: string
+};
+// 主页第四个模块数据类型
+export type HomeFourType = {
+    title: string,
+    subTitle: string,
+    list: Array<{
+        id: string
+        icon: string,
+        mtd: string,
+        val: string
+    }>
+};
