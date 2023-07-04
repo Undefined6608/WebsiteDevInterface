@@ -115,7 +115,7 @@ export type ContactDataType = {
     context: string,
     phone: string,
     email: string
-}
+};
 // 喜敷资讯数据类型
 export type InformationDataType = {
     title: string,
@@ -127,4 +127,4 @@ export type InformationDataType = {
         title: string,
         context: string
     }>
-}
+};

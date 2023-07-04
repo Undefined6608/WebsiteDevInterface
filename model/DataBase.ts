@@ -190,7 +190,7 @@ const HomeFourData: HomeFourType = {
         },
     ]
 };
-// 主页第二个模块数据
+// 产品页面数据
 const ProductListData: HomeTwoType = {
     title: "产品中心",
     subTitle: "PRODUCT CENTER",
@@ -298,7 +298,7 @@ const InformationData: InformationDataType = {
             context: "为了进一步推动慢性病皮肤病的管理，由深圳健康管理协会皮肤科专委会承办的“皮肤科医生如何做好慢性皮肤病管理”会议，于..."
         },
     ]
-}
+};
 export {
     logoData,
     subTitle,

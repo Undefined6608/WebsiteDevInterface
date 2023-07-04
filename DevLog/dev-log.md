@@ -866,58 +866,458 @@ homeRouter.get('/homeThree', getHomeThree);
 在`publicInterface.ts`中：
 
 ```ts
-
+// 主页第四个模块数据类型
+export type HomeFourType = {
+    title: string,
+    subTitle: string,
+    list: Array<{
+        id: string
+        icon: string,
+        mtd: string,
+        val: string
+    }>
+};
 ```
 
 在`DataBase.ts`中：
 
 ```ts
-
+// 主页第四个模块数据
+const HomeFourData: HomeFourType = {
+    title: "联系我们",
+    subTitle: "CONTACT US",
+    list: [
+        {
+            id: crypto.randomUUID(),
+            icon: "http://39.101.72.168:81/image/examination/project/contact1.jpg",
+            mtd: "联系邮箱",
+            val: "hi_xifu@163.com"
+        }, {
+            id: crypto.randomUUID(),
+            icon: "http://39.101.72.168:81/image/examination/project/contact2.jpg",
+            mtd: "联系电话",
+            val: "020-31523984"
+        }, {
+            id: crypto.randomUUID(),
+            icon: "http://39.101.72.168:81/image/examination/project/contact3.jpg",
+            mtd: "联系地址",
+            val: "广东省广州市白云区石厦路榕溪工业大街新创展大厦605房"
+        },
+    ]
+};
 ```
 
 在`homeController.ts`中：
 
 ```ts
+// 引入工具方法
+import {resultType, SUCCESS} from "../utils";
+// 引入数据源
+import {HomeFourData, HomeImgList, HomeOneData, HomeThreeData, HomeTwoData, logoData} from "../model/DataBase";
+// 引入日志输出工具
+import {logger} from "../config/config.default";
 
+/***************定义控制器方法*******************/
+// 首页第一个模块数据控制器
+export const getHomeOne = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeOneData));
+    } catch (e) {
+        next(e);
+    }
+};
+// 获取首页图片集合
+export const getHomeImgList = (req, res, next) => {
+    try {
+        // 直接抛出图片数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeImgList));
+    } catch (e) {
+        next(e);
+    }
+};
+// 首页第二个模块数据控制器
+export const getHomeTwo = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeTwoData));
+    } catch (e) {
+        next(e);
+    }
+};
+// 首页第三个模块数据控制器
+export const getHomeThree = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeThreeData));
+    } catch (e) {
+        next(e);
+    }
+};
+// 首页第四个模块数据控制器
+export const getHomeFour = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeFourData));
+    } catch (e) {
+        next(e);
+    }
+};	
 ```
 
 在`homeRouter.ts`中：
 
 ```ts
-
+//首页第四个模块数据路由
+homeRouter.get('/homeFour', getHomeFour);
 ```
 
-##### 6、编写首页第一个模块数据
+#### II、编写产品中心数据接口
+
+在`DataBase.ts`中：
+
+```ts
+// 产品页面数据
+const ProductListData: HomeTwoType = {
+    title: "产品中心",
+    subTitle: "PRODUCT CENTER",
+    type: [
+        {
+            id: 'p1',
+            name: "喜敷 | 成人护理系列"
+        }, {
+            id: 'p2',
+            name: "喜敷 | 婴幼儿系列"
+        }, {
+            id: 'p3',
+            name: "沐儿洁灵 | 儿童洗护系列"
+        },
+    ],
+    productList: [
+        {
+            id: crypto.randomUUID(),
+            typeId: 'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product1.jpg",
+            name: "XIFU 红豚护理软膏"
+        }, {
+            id: crypto.randomUUID(),
+            typeId: 'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product2.jpg",
+            name: "XIFU喜敷 水杨酸焕颜面膜 100g"
+        }, {
+            id: crypto.randomUUID(),
+            typeId: 'p1',
+            itemImg: "http://39.101.72.168:81/image/examination/project/product3.jpg",
+            name: "XIFU喜敷 氨基酸洁面慕斯 100ml"
+        }
+    ]
+};
+```
+
+在`productController.ts`中：
+
+```ts
+// 引入工具方法
+import {resultType, SUCCESS} from "../utils";
+// 引入数据源
+import {ProductListData} from "../model/DataBase";
+// 引入日志输出工具
+import {logger} from "../config/config.default";
+
+/***************定义控制器方法*******************/
+// 产品列表
+export const productList = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", ProductListData));
+    } catch (e) {
+        next(e);
+    }
+};
+```
+
+在`productRouter.ts`中：
+
+```ts
+// 引入express
+const express = require('express');
+// 创建router实例
+const productRouter = express.Router();
+// 引入控制器
+import {productList} from "../controller/productController";
+
+/***************定义路由*****************/
+productRouter.get('/productList', productList);
+
+/****************抛出路由***************/
+export default productRouter;
+```
+
+## 23.7.4
+
+### 一、继续编写
+
+#### I、编写关于喜敷页面接口
 
 在`publicInterface.ts`中：
 
 ```ts
-
+// 关于页面数据类型
+export type AboutDataType = Array<{
+    id: string,
+    title: string,
+    subTitle: string,
+    mainImg: string,
+    bgImg: string,
+    context: Array<{
+        id: string,
+        msg: string
+    }>
+}>;
 ```
 
 在`DataBase.ts`中：
 
 ```ts
-
+// 关于页面的数据
+const AboutListData: AboutDataType = [
+    {
+        id: crypto.randomUUID(),
+        title: "关于我们",
+        subTitle: "ABOUT US",
+        mainImg: "http://39.101.72.168:81/image/examination/project/about01.jpg",
+        bgImg: "http://39.101.72.168:81/image/examination/project/bgImg01.jpg",
+        context: [
+            {
+                id: crypto.randomUUID(),
+                msg: "XIFU喜敷®是源自台湾的精品科学护肤品牌，创始人Jeff是一位突破性的皮肤科专家和配方师，曾在医美行业从事多年，深悉各类皮肤症状与相关药物成分的相辅性，而后游历于东南亚国家十余年积累了深厚的皮肤外用药的研发和生产经验。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "在各种类别的护肤品应用中，Jeff觉得应当遵循科学的护理方式，理性护肤。"
+            }, {
+                id: crypto.randomUUID(),
+                msg: "喜敷系列产品研发过程中，正是秉承Jeff先生这种“科学护肤”的理念，依托其多年的皮肤外用药研发和生产的经验，结合亚洲人皮肤特点，对研发产品的功能定位、核心成份、核心技术严格把关，不断对产品配方和工艺进行优化和改进，打造每一款产品最好的功效。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "使用安全、有效的产品，是辅助皮肤护理的唯一科学选项！——Jeff"
+            },
+        ]
+    }, {
+        id: crypto.randomUUID(),
+        title: "发展历程",
+        subTitle: "COURSE",
+        mainImg: "http://39.101.72.168:81/image/examination/project/about02.jpg",
+        bgImg: "http://39.101.72.168:81/image/examination/project/bgImg01.jpg",
+        context: [
+            {
+                id: crypto.randomUUID(),
+                msg: "企业理念：诚信，创新，专业，务实。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "企业精神：敢于担当，勇于创新，与时俱进。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "企业价值观：追求不凡，创造完美。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "企业愿景：让每个人更快乐，更美丽"
+            },
+        ]
+    },
+];
 ```
 
-在`homeController.ts`中：
+在`aboutController.ts`中：
 
 ```ts
+// 引入工具方法
+import {resultType, SUCCESS} from "../utils";
+// 引入数据源
+import {AboutListData, logoData} from "../model/DataBase";
+// 引入日志输出工具
+import {logger} from "../config/config.default";
 
+/***************定义控制器方法*******************/
+export const getAboutList = (req, res, next) => {
+    try {
+        res.send(resultType(SUCCESS, "获取成功！", {
+            list: AboutListData
+        }))
+    } catch (e) {
+        next(e);
+    }
+}
 ```
 
-在`homeRouter.ts`中：
+在`aboutRouter.ts`中：
 
 ```ts
+// 引入express
+const express = require('express');
+// 创建router实例
+const aboutRouter = express.Router();
+// 引入控制器
+import {getAboutList} from "../controller/aboutController";
 
+/***************定义路由*****************/
+aboutRouter.get('/getAboutList', getAboutList);
+/****************抛出路由***************/
+export default aboutRouter;
 ```
 
+#### II、编写联系我们页面接口
 
+在`publicInterface.ts`中：
 
+```ts
+// 联系我们表单数据类型
+export type ContactDataType = {
+    id: string,
+    name: string,
+    context: string,
+    phone: string,
+    email: string
+}
+```
 
+在`DataBase.ts`中：
 
+```ts
+// 联系我们页面表单集合
+const ContactFormList: Array<ContactDataType> = [];
+```
 
+在`contactController.ts`中：
 
+```ts
+// 引入工具方法
+import {FAIL, resultType, SUCCESS} from "../utils";
+// 引入数据源
+import {ContactFormList, logoData} from "../model/DataBase";
+// 引入日志输出工具
+import {logger} from "../config/config.default";
+import * as crypto from "crypto";
 
+/***************定义控制器方法*******************/
+export const pushForm = (req, res, next) => {
+    try {
+        const body = req.body;
+        if (!body.name || !body.email || !body.phone || !body.context) return res.send(resultType(FAIL, "参数错误!"));
+        ContactFormList.push({
+            id: crypto.randomUUID(),
+            name: body.name,
+            email: body.email,
+            phone: body.phone,
+            context: body.context
+        });
+        res.send(resultType(SUCCESS, "保存！"));
+    } catch (e) {
+        next(e);
+    }
+}
+```
+
+在`contactRouter.ts`中：
+
+```ts
+// 引入express
+const express = require('express');
+// 创建router实例
+const contactRouter = express.Router();
+// 引入控制器
+import {pushForm} from "../controller/contactController";
+
+/***************定义路由*****************/
+contactRouter.post('/pushForm', pushForm);
+
+/****************抛出路由***************/
+export default contactRouter;
+```
+
+#### III、编写喜敷新闻资讯接口
+
+在`publicInterface.ts`中：
+
+```ts
+// 喜敷资讯数据类型
+export type InformationDataType = {
+    title: string,
+    subTitle: string,
+    list: Array<{
+        id: string,
+        month: string,
+        day: string,
+        title: string,
+        context: string
+    }>
+};
+```
+
+在`DataBase.ts`中：
+
+```ts
+// 喜敷资讯数据
+const InformationData: InformationDataType = {
+    title: "喜敷资讯",
+    subTitle: "INFORMATION",
+    list: [
+        {
+            id: crypto.randomUUID(),
+            month:"2019/12",
+            day:"21",
+            title: "学术论坛 百花齐放——“第二届粤东皮肤科高峰论坛”",
+            context: "2019年12月21日，“第二届粤东皮肤科高峰论坛”暨广东省继续教育项目《儿童皮肤科诊疗新进展学习班》，在汕头市盛大召开。本次学术活动邀请了多位国内知名的皮肤专家莅临汕头授课，交流皮肤科领域的最新诊疗技术、最新科研动态、最新临床指南、最新药..."
+        }, {
+            id: crypto.randomUUID(),
+            month:"2019/11",
+            day:"30",
+            title: "中西医结合会议丨关于喜敷儿科产品近期实际应用与临床反馈结果展述",
+            context: "由广东省中医药学会皮肤病专业委员会、广东省中西医结合学会皮肤性病专业委员会、广东省中医药学研究促进会皮肤性病学分会主办的：“2019年广东省中医中西医结合皮肤性病学术会议-第十五届全国中医中西医结合皮肤性病研究进展学习班”，于2019年11..."
+        }, {
+            id: crypto.randomUUID(),
+            month:"2019/11",
+            day:"29",
+            title: "深圳健协皮肤科会议 | 如何科学护肤，新征途，喜敷与您携手共进",
+            context: "为了进一步推动慢性病皮肤病的管理，由深圳健康管理协会皮肤科专委会承办的“皮肤科医生如何做好慢性皮肤病管理”会议，于..."
+        },
+    ]
+};
+```
+
+在`informationController.ts`中：
+
+```ts
+// 引入工具方法
+import {resultType, SUCCESS} from "../utils";
+// 引入数据源
+import {InformationData, logoData} from "../model/DataBase";
+// 引入日志输出工具
+import {logger} from "../config/config.default";
+
+/***************定义控制器方法*******************/
+export const getInformationData = (req, res, next) => {
+    try {
+        res.send(resultType(SUCCESS, "获取成功！", InformationData));
+    } catch (e) {
+        next(e);
+    }
+}
+```
+
+在`informationRouter.ts`中：
+
+```ts
+// 引入express
+const express = require('express');
+// 创建router实例
+const informationRouter = express.Router();
+// 引入控制器
+import {getInformationData} from "../controller/informationController";
+
+/***************定义路由*****************/
+informationRouter.get('/getInformationData', getInformationData);
+
+/****************抛出路由***************/
+export default informationRouter;
+```
 
