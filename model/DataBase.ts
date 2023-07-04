@@ -1,6 +1,7 @@
 import {
-    BottomMsgListType, HomeFourType, HomeImgType,
-    HomeOneType, HomeThreeType, HomeTwoType,
+    AboutDataType,
+    BottomMsgListType, ContactDataType, HomeFourType, HomeImgType,
+    HomeOneType, HomeThreeType, HomeTwoType, InformationDataType,
     LogoDataType,
     NavItemType,
     PageTopImg,
@@ -35,7 +36,7 @@ const navList: Array<NavItemType> = [
         url: "/product"
     }, {
         id: 'd',
-        name: "喜敷咨询",
+        name: "喜敷咨讯",
         subName: "INFORMATION",
         url: "/information"
     }, {
@@ -224,7 +225,80 @@ const ProductListData: HomeTwoType = {
         }
     ]
 };
-
+// 关于页面的数据
+const AboutListData: AboutDataType = [
+    {
+        id: crypto.randomUUID(),
+        title: "关于我们",
+        subTitle: "ABOUT US",
+        mainImg: "http://39.101.72.168:81/image/examination/project/about01.jpg",
+        bgImg: "http://39.101.72.168:81/image/examination/project/bgImg01.jpg",
+        context: [
+            {
+                id: crypto.randomUUID(),
+                msg: "XIFU喜敷®是源自台湾的精品科学护肤品牌，创始人Jeff是一位突破性的皮肤科专家和配方师，曾在医美行业从事多年，深悉各类皮肤症状与相关药物成分的相辅性，而后游历于东南亚国家十余年积累了深厚的皮肤外用药的研发和生产经验。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "在各种类别的护肤品应用中，Jeff觉得应当遵循科学的护理方式，理性护肤。"
+            }, {
+                id: crypto.randomUUID(),
+                msg: "喜敷系列产品研发过程中，正是秉承Jeff先生这种“科学护肤”的理念，依托其多年的皮肤外用药研发和生产的经验，结合亚洲人皮肤特点，对研发产品的功能定位、核心成份、核心技术严格把关，不断对产品配方和工艺进行优化和改进，打造每一款产品最好的功效。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "使用安全、有效的产品，是辅助皮肤护理的唯一科学选项！——Jeff"
+            },
+        ]
+    }, {
+        id: crypto.randomUUID(),
+        title: "发展历程",
+        subTitle: "COURSE",
+        mainImg: "http://39.101.72.168:81/image/examination/project/about02.jpg",
+        bgImg: "http://39.101.72.168:81/image/examination/project/bgImg01.jpg",
+        context: [
+            {
+                id: crypto.randomUUID(),
+                msg: "企业理念：诚信，创新，专业，务实。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "企业精神：敢于担当，勇于创新，与时俱进。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "企业价值观：追求不凡，创造完美。",
+            }, {
+                id: crypto.randomUUID(),
+                msg: "企业愿景：让每个人更快乐，更美丽"
+            },
+        ]
+    },
+];
+// 联系我们页面表单集合
+const ContactFormList: Array<ContactDataType> = [];
+// 喜敷资讯数据
+const InformationData: InformationDataType = {
+    title: "喜敷资讯",
+    subTitle: "INFORMATION",
+    list: [
+        {
+            id: crypto.randomUUID(),
+            month:"2019/12",
+            day:"21",
+            title: "学术论坛 百花齐放——“第二届粤东皮肤科高峰论坛”",
+            context: "2019年12月21日，“第二届粤东皮肤科高峰论坛”暨广东省继续教育项目《儿童皮肤科诊疗新进展学习班》，在汕头市盛大召开。本次学术活动邀请了多位国内知名的皮肤专家莅临汕头授课，交流皮肤科领域的最新诊疗技术、最新科研动态、最新临床指南、最新药..."
+        }, {
+            id: crypto.randomUUID(),
+            month:"2019/11",
+            day:"30",
+            title: "中西医结合会议丨关于喜敷儿科产品近期实际应用与临床反馈结果展述",
+            context: "由广东省中医药学会皮肤病专业委员会、广东省中西医结合学会皮肤性病专业委员会、广东省中医药学研究促进会皮肤性病学分会主办的：“2019年广东省中医中西医结合皮肤性病学术会议-第十五届全国中医中西医结合皮肤性病研究进展学习班”，于2019年11..."
+        }, {
+            id: crypto.randomUUID(),
+            month:"2019/11",
+            day:"29",
+            title: "深圳健协皮肤科会议 | 如何科学护肤，新征途，喜敷与您携手共进",
+            context: "为了进一步推动慢性病皮肤病的管理，由深圳健康管理协会皮肤科专委会承办的“皮肤科医生如何做好慢性皮肤病管理”会议，于..."
+        },
+    ]
+}
 export {
     logoData,
     subTitle,
@@ -236,5 +310,8 @@ export {
     HomeTwoData,
     HomeThreeData,
     HomeFourData,
-    ProductListData
+    ProductListData,
+    AboutListData,
+    ContactFormList,
+    InformationData
 };

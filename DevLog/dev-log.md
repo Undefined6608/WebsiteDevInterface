@@ -814,33 +814,54 @@ export const getHomeTwo = (req, res, next) => {
 homeRouter.get('/homeOne', getHomeTwo);
 ```
 
-##### 4、编写首页第一个模块数据
+##### 4、编写首页第三个模块数据
 
 在`publicInterface.ts`中：
 
 ```ts
-
+// 主页第三个模块数据类型
+export type HomeThreeType = {
+    oneTitle: string,
+    oneSubTitle: string,
+    twoTitle: string,
+    twoSubTitle: string
+};
 ```
 
 在`DataBase.ts`中：
 
 ```ts
-
+// 主页第二个模块数据
+const HomeThreeData: HomeThreeType = {
+    oneTitle: "XIFU  喜敷",
+    oneSubTitle: "----- 源自台湾知名化工专家深耕多年的精心之作 -----",
+    twoTitle: "【专业科学护肤品牌】",
+    twoSubTitle: "专注问题肌肤的护理探研  |  引领专业成就科技之美  |  打造护肤新势力"
+}
 ```
 
 在`homeController.ts`中：
 
 ```ts
-
+// 首页第三个模块数据控制器
+export const getHomeThree = (req, res, next) => {
+    try {
+        // 直接抛出数据
+        res.send(resultType(SUCCESS, "获取成功！", HomeThreeData));
+    } catch (e) {
+        next(e);
+    }
+};
 ```
 
 在`homeRouter.ts`中：
 
 ```ts
-
+//首页第三个模块数据路由
+homeRouter.get('/homeThree', getHomeThree);
 ```
 
-##### 5、编写首页第一个模块数据
+##### 5、编写首页第四个模块数据
 
 在`publicInterface.ts`中：
 

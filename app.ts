@@ -18,8 +18,8 @@ const port = process.env.PORT || 4000;
 
 // 定义允许跨域请求的请求源地址列表
 const allowedOrigins: string[] = [
-    'http://192.168.126.1:3000',
-    'http://localhost:3000'
+    'http://192.168.126.1:5173',
+    'http://localhost:5173'
 ];
 
 // 添加中间件

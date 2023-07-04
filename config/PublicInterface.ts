@@ -96,3 +96,35 @@ export type HomeFourType = {
         val: string
     }>
 };
+// 关于页面数据类型
+export type AboutDataType = Array<{
+    id: string,
+    title: string,
+    subTitle: string,
+    mainImg: string,
+    bgImg: string,
+    context: Array<{
+        id: string,
+        msg: string
+    }>
+}>;
+// 联系我们表单数据类型
+export type ContactDataType = {
+    id: string,
+    name: string,
+    context: string,
+    phone: string,
+    email: string
+}
+// 喜敷资讯数据类型
+export type InformationDataType = {
+    title: string,
+    subTitle: string,
+    list: Array<{
+        id: string,
+        month: string,
+        day: string,
+        title: string,
+        context: string
+    }>
+}
